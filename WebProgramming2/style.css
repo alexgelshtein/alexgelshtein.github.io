@@ -1,0 +1,236 @@
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+}
+
+section,
+footer {
+    padding: 7vh 0;
+}
+
+.decor-hr {
+    max-width: 40%;
+    border-width: 0.3em;
+    border-color: #FF7F50;
+    margin: 20px auto;
+    border-radius: 100px;
+
+}
+
+.mcls{
+    margin-top: 20px;
+}
+.decor-hr-white {
+    max-width: 30%;
+    border-width: 0.3em;
+    border-color: #fff;
+    margin: 20px auto;
+    border-radius: 100px;
+}
+
+.head-img {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, .7) 0, rgba(92, 77, 66, .7) 100%), url(images/sevwall.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    padding-bottom: 12%;
+    background-blend-mode: darken
+}
+
+nav {
+    padding: 1rem;
+    transition: 0.5s;
+}
+
+nav a {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+nav a:hover {
+    color: #f24516;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")
+}
+
+.navbar-scrolled {
+    background-color: #fff;
+}
+
+.navbar-scrolled a {
+    color: #000;
+}
+
+.show,
+.collapsing {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5vw;
+    letter-spacing: 3px;
+}
+
+.course-header {
+    padding-top: 30%;
+    color: #ffffff;
+}
+
+.course-header p {
+    font-size: 1.5em;
+}
+
+.btn-webdev {
+    background-color: #FF7F50;
+    font-size: 1.1em;
+    color: #fff;
+    border: none;
+    border-radius: .25rem;
+    padding-bottom: 6px;
+}
+
+.btn-webdev:hover {
+    color: #fff;
+    background-color: #f24516;
+}
+
+#description {
+    background-color: #FF7F50;
+    min-height: 50vh;
+    color: #fff;
+}
+
+#description p {
+    margin-bottom: 1.5em;
+}
+
+#gallery .fab {
+    font-size: 4em;
+    margin-bottom: 0.2em;
+}
+
+.fab:hover {
+    color: #f24516;
+}
+
+#gallery h3 {
+    margin-bottom: 0.5em;
+}
+
+#FAQ {
+    background-color: #2b3040;
+}
+
+#FAQ h2,
+label {
+    color: #fff;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.form-border {
+    border: 2px solid #FF7F50;
+}
+
+.btn-col {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.btn-col button {
+    width: 100%;
+}
+
+footer {
+    background-color: #F8F9FA;
+}
+
+footer .fab {
+    font-size: 1.7em;
+}
+
+.ref {
+    margin-right: 1em;
+    color: #FF7F50;
+}
+
+.ref:nth-child(3) {
+    margin-right: 0;
+}
+
+@media (max-width: 1200px) {
+    header h1 {
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 990px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    .course-header {
+        padding-top: 30%;
+    }
+
+    .course-header p {
+        font-size: 24px;
+    }
+
+    .profile {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    nav {
+        background-color: #fff;
+    }
+
+    nav a {
+        color: #000;
+    }
+
+    .navbar-toggler-icon {
+        background-color: #FF7F50;
+    }
+}
+
+@media (max-width: 440px) {
+
+    header h1 {
+        letter-spacing: 0;
+        font-size: 1.2em;
+    }
+
+    .course-header p {
+        font-size: 1.1em;
+    }
+
+    #description p {
+        font-size: 16px;
+    }
+
+    .btn-webdev {
+        width: 100%;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    #gallery h3 {
+        font-size: 1.5em;
+    }
+}

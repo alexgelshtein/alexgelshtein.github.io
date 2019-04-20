@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--    Awesome font-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Лендинг</title>
+</head>
+
+<body id="page-top">
+
+<header class="head-img">
+    <!--       Navigation-->
+    <nav class="navbar navbar-expand-sm fixed-top">
+        <div class="container">
+            <a href="#page-top" class="navbar-brand">Северная Стена</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-bar" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu-bar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="#description" class="nav-link active">Описание</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
+                    <li class="nav-item"><a href="#FAQ" class="nav-link">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--        End navigation-->
+    <!--        Header content-->
+    <div class="container">
+        <div class="row text-center justify-content-center course-header">
+            <div class="col-sm-12 col-md-10">
+                <h1 class="text-uppercase"><b>Северная стена - самый большой скалодром в России</b></h1>
+                <hr class="decor-hr">
+                <p>Фучика 10 к. 2 л. Е, метро Бухарестская, Санкт-Петербург <br> каждый день с 8:00 до 23:30</p>
+                <a href="#description" class="btn btn-webdev">Перейти к описанию</a>
+            </div>
+        </div>
+    </div>
+    <!--        End header content-->
+</header>
+
+<section id="description">
+    <div class="container text-center">
+        <h2>Что такое Северная стена?</h2>
+        <hr class="decor-hr-white">
+        <div class="row justify-content-center">
+            <div class=" col-md-10">
+
+                <p>Это самый большой и самый лучший скалодром в России. Это наша мечта и наше главное дело.</p>
+
+                <p>Скалодром открыт для всех желающих. Новичков и начинающих мы обучим на вводных занятиях и на базовом курсе. Детей мы принимаем в секции, которые работают каждый день. И, конечно, можно заниматься самостоятельно.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <div class="container text-center">
+        <h2>Немного фотографий</h2>
+        <hr class="decor-hr">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8 text-center mcls">
+                <img src="images/ss1.jpg">
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8 text-center mcls">
+                <img src="images/ss2.jpg">
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8 text-center mcls">
+                <img src="images/ss3.jpg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="FAQ">
+    <div class="container">
+        <h2 class="text-center">Задавайте свои вопросы</h2>
+        <hr class="decor-hr">
+        <div class="row justify-content-center">
+            <div class="col-md-3 cols-md-4 profile">
+                <img src="images/logo.jpg" alt="">
+            </div>
+            <div class="col-md-6 col-md-8">
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control form-border" id="nameInput">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control form-border" id="messageTextarea" rows="3"></textarea>
+                        <div class="col-sm-3 btn-col">
+                            <button type="submit" class="btn btn-webdev">Отправить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-lg-4 text-center">
+                <span class="author">Гельштейн Александр, М3305</span>
+            </div>
+            <div class="col-10 col-lg-4 text-center">
+                <a href="" class="ref"><i class="fab fa-vk"></i></a>
+                <a href="" class="ref"><i class="fab fa-google"></i></a>
+                <a href="" class="ref"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    let nav = document.getElementsByTagName('nav')[0];
+    document.body.onscroll = function() {
+        console.log(nav);
+        const maxScrollTop = 200;
+        if (document.body.scrollTop > maxScrollTop || document.documentElement.scrollTop > maxScrollTop) {
+            nav.classList.add('navbar-scrolled');
+        } else {
+            nav.classList.remove('navbar-scrolled');
+        }
+    };
+</script>
+</body></html>
