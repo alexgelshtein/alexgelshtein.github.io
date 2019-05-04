@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <title>Коллажи</title>
-    </head>
-
-    <body>
-        <script src="index.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Collage</title>
+</head>
+<body>
+</body>
+    <script>
+        function parseQuote(response) {
+            let waitMsg = document.createElement('h1');
+            waitMsg.innerHTML = "Please, wait while loading...";
+            document.body.appendChild(waitMsg);
+            let body = document.getElementsByTagName("body")[0];
+            let canvas = document.createElement("canvas");
+            body.appendChild(canvas);
+            canvas.width = 640;
+            canvas.height = 480;
+            canvas.style.display = "block";
+            let point = { x : Math.round(Math.random()*100 + 100), y : Math.round(Math.random()*100 + 100)};
+            let im_arr = [new Image(), new Image(), new Image(), new Image()];
+            let im_sizes = [ {x : point.x, y : point.y}, {x : point.x, y : (480 - point.y)}, { x : (640 - point.x), y : point.y}, {x : (640 - point.x), y : 480 - point.y}]
+            let flag = 0;
+            for(let i = 0;i < 4; i++){
+                im_arr[i].onload = function() {
+                    flag++;
+                    if(flag == 4) {
+                        waitMsg.hidden = true;
+                        let context = canvas.getContext('2d');
+                        context.drawImage(im_arr[0], 0, 0);
+                        context.drawImage(im_arr[1], 0, point.y);
+                        context.drawImage(im_arr[2], point.x, 0);
+                        context.drawImage(im_arr[3], point.x, point.y);
+                        context.fillStyle = "rgba(0, 0, 0, 0.45)";
+                        context.fillRect(0, 0, 640, 480);
+                        context.font = "35px Georgia";
+                        context.textAlign = "center";
+                        context.fillStyle = "yellow";
+                        let words = response.quoteText.split(" ");
+                        let line_quote = "";
+                        let lines_array = [];
+                        for(let i = 0; i < words.length; i++) {
+                            console.log(context.measureText(line_quote + " " + words[i]).width);
+                            if(context.measureText(line_quote + " " + words[i]).width < canvas.width) {
+                                line_quote += " " + words[i];
+                            } else {
+                                lines_array.push(line_quote);
+                                line_quote = words[i];
+                            }
+                        }
+                        lines_array.push(line_quote);
+                        console.log(lines_array);
+                        let lineHeight = 30;
+                        let height = canvas.height / 2 - (lines_array.length - 1) / 2 * lineHeight
+                        for(let i = 0; i < lines_array.length; i++) {
+                            context.fillText(lines_array[i], canvas.width / 2, height);
+                            height += lineHeight;
+                        }
+                        let save_button = document.createElement("button");
+                        save_button.textContent ="Download";
+                        body.appendChild(save_button);
+                        save_button.onclick = function() {
+                            let link = document.createElement("a");
+                            link.href = canvas.toDataURL();
+                            link.download="image.png";
+                            link.click();
+                        }
+                    }
+                }
+                im_arr[i].src = 'https://source.unsplash.com/collection/656243/' + im_sizes[i].x + "x" + im_sizes[i].y;
+                im_arr[i].crossOrigin = 'anonymous';
+            };
+        }
+    </script>
+    <script src="https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote"></script>
 </html>
