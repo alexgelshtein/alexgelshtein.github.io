@@ -1,27 +1,1610 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<title>Web-программирование</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Куда поступать в 2026 — IT-направления</title>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #111827;
+      --surface2: #1a2235;
+      --border: #1f2d45;
+      --accent: #3b82f6;
+      --accent2: #8b5cf6;
+      --accent3: #06b6d4;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --text3: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── Hero ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 60px 24px 48px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #1e3a8a33 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1e3a8a40;
+      border: 1px solid #3b82f640;
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #e2e8f0 30%, #60a5fa 70%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text2);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    /* ─── Profile Card ──────────────────────────────────── */
+    .profile-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 860px;
+      margin: 0 auto 48px;
+    }
+    .profile-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+    .profile-chip .icon { font-size: 18px; }
+    .profile-chip strong { color: var(--text); }
+    .profile-chip span { color: var(--text2); }
+
+    /* ─── Filters ───────────────────────────────────────── */
+    .filters-wrap {
+      max-width: 1100px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-label { font-size: 13px; color: var(--text3); margin-right: 4px; }
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 13px;
+      color: var(--text2);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .score-hint {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--text3);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+    }
+
+    /* ─── Legend ────────────────────────────────────────── */
+    .legend {
+      max-width: 1100px;
+      margin: 0 auto 28px;
+      padding: 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text3); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* ─── Grid ──────────────────────────────────────────── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .uni-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .section-header .uni-info h2 { font-size: 20px; font-weight: 700; }
+    .section-header .uni-info p { font-size: 13px; color: var(--text3); margin-top: 2px; }
+    .priority-stars { font-size: 15px; letter-spacing: 1px; }
+    .section-header .uni-link {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      background: #1e3a8a25;
+      border: 1px solid #3b82f630;
+      border-radius: 8px;
+      padding: 6px 12px;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .section-header .uni-link:hover { background: #1e3a8a55; }
+
+    .uni-section { margin-bottom: 52px; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    /* ─── Direction Card ────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+    }
+    .card.priority-top::before { background: linear-gradient(90deg, #10b981, #06b6d4); }
+    .card.priority-high::before { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+    .card.priority-mid::before { background: linear-gradient(90deg, #f59e0b, #f97316); }
+    .card.priority-alt::before { background: linear-gradient(90deg, #64748b, #94a3b8); }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px #00000050;
+      border-color: #2d4a6e;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-right: 72px;
+    }
+    .card-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .priority-top .card-num { background: #064e3b; color: #10b981; }
+    .priority-high .card-num { background: #1e3a8a; color: #60a5fa; }
+    .priority-mid .card-num { background: #451a03; color: #f59e0b; }
+    .priority-alt .card-num { background: #1e293b; color: #94a3b8; }
+
+    .card-title-wrap { flex: 1; }
+    .card-title { font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .card-code {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text3);
+      background: var(--surface2);
+      border-radius: 6px;
+      padding: 3px 7px;
+      margin-top: 5px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .card-careers {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 16px;
+    }
+    .card-careers strong { color: var(--text2); display: block; margin-bottom: 4px; }
+    .career-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+    .career-tag {
+      background: var(--surface2);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .score-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .score-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      overflow: hidden;
+      min-width: 60px;
+    }
+    .score-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width .6s ease;
+    }
+    .score-low .score-bar { background: var(--green); }
+    .score-mid .score-bar { background: var(--accent); }
+    .score-high .score-bar { background: var(--accent2); }
+    .score-top .score-bar { background: var(--red); }
+
+    .places-badge {
+      font-size: 12px;
+      color: var(--text3);
+      background: var(--surface2);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+    .card-link {
+      display: block;
+      margin-top: 14px;
+      text-align: center;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .card-link:hover {
+      background: #1e3a8a40;
+      border-color: var(--accent);
+    }
+
+    /* ─── Score meter label ─────────────────────────────── */
+    .score-label {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .score-low .score-label { color: var(--green); }
+    .score-mid .score-label { color: var(--accent); }
+    .score-high .score-label { color: var(--accent2); }
+    .score-top .score-label { color: var(--red); }
+
+    /* ─── Alternatives Section ──────────────────────────── */
+    .alt-section {
+      background: linear-gradient(135deg, #0f1f3d, #1a1040);
+      border: 1px solid #2d4a6e;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 52px;
+    }
+    .alt-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #a78bfa, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .alt-section p { font-size: 14px; color: var(--text3); margin-bottom: 24px; }
+    .alt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .alt-card {
+      background: #0b1628;
+      border: 1px solid #1e3054;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .alt-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .alt-card p { font-size: 12px; color: var(--text3); line-height: 1.5; }
+    .alt-card .alt-tag {
+      display: inline-block;
+      font-size: 11px;
+      background: #1e3a8a30;
+      color: var(--accent);
+      border-radius: 5px;
+      padding: 2px 7px;
+      margin-bottom: 8px;
+    }
+
+    /* ─── Moscow block ──────────────────────────────────── */
+    .moscow-note {
+      background: #1a1a0f;
+      border: 1px solid #3d3d1f;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.7;
+    }
+    .moscow-note strong { color: var(--yellow); }
+
+    /* ─── Tips ──────────────────────────────────────────── */
+    .tips {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 52px;
+    }
+    .tips h3 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+    .tip-list { display: flex; flex-direction: column; gap: 10px; }
+    .tip { display: flex; gap: 12px; font-size: 14px; color: var(--text2); }
+    .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── Score scale legend ────────────────────────────── */
+    .scale-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 24px;
+    }
+    .scale-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .scale-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    /* ─── Sticky header ─────────────────────────────────── */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0b0f1acc;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-link {
+      font-size: 13px;
+      color: var(--text3);
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      transition: all .2s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-brand { font-size: 13px; font-weight: 700; color: var(--accent); margin-right: 8px; }
+
+    /* ─── Footer ────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: var(--text3);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── Hidden for filter ─────────────────────────────── */
+    .card.hidden { display: none; }
+    .uni-section.all-hidden { display: none; }
+
+    /* ─── Priority label ────────────────────────────────── */
+    .priority-label {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+    .priority-top .priority-label { background: #064e3b; color: #10b981; }
+    .priority-high .priority-label { background: #1e3a8a; color: #60a5fa; }
+    .priority-mid .priority-label { background: #451a03; color: #f59e0b; }
+    .priority-alt .priority-label { background: #1e293b; color: #94a3b8; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 16px 32px; }
+      .main { padding: 0 16px 60px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .section-header { flex-wrap: wrap; }
+      .section-header .uni-link { margin-left: 0; }
+    }
+  </style>
 </head>
 <body>
-	<h1>Лабораторные работы</h1>
-	<ol>
-		<li>
-			<a href="WebProgramming1" target="_blanket">Адаптивная верстка</a>
-		</li>
-		<li>
-			<a href="WebProgramming2" target="_blanket">Одностраничный сайт</a>
-		</li>
-		<li>
-			<a href="WebProgramming3" target="_blanket">Генератор контента</a>
-		</li>
-		<li>
-			<a href="webProgrammingLab4" target="_blanket">Новостной портал</a>
-		</li>
-		<li>
-			<a href="" target="_blanket">Markdown editor</a>
-		</li>
-	</ol>
+
+<!-- ─── Sticky Nav ──────────────────────────────────────── -->
+<nav class="sticky-nav">
+  <span class="nav-brand">🎓 Поступление 2026</span>
+  <a class="nav-link" href="#itmo">ИТМО</a>
+  <a class="nav-link" href="#hse">ВШЭ СПб</a>
+  <a class="nav-link" href="#spbgu">СПбГУ</a>
+  <a class="nav-link" href="#polytech">Политех</a>
+  <a class="nav-link" href="#leti">ЛЭТИ</a>
+  <a class="nav-link" href="#moscow">Москва</a>
+  <a class="nav-link" href="#alt">Альтернативы</a>
+</nav>
+
+<!-- ─── Hero ───────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-badge">🇷🇺 Приёмная кампания 2026 · Санкт-Петербург</div>
+  <h1>Куда поступать<br>с информатикой в 2026?</h1>
+  <p class="hero-sub">
+    Подбор IT-направлений бакалавриата для выпускника физмат-лицея.<br>
+    Экзамены: <strong>Русский · Математика · Информатика</strong> — 5 вузов × 5 направлений = 25 вариантов.
+  </p>
+
+  <div class="profile-card">
+    <div class="profile-chip">
+      <span class="icon">📚</span>
+      <div><strong>ЕГЭ</strong><span>&nbsp;Русский, Математика, Информатика</span></div>
+    </div>
+    <div class="profile-chip">
+      <span class="icon">🏫</span>
+      <div><strong>Школа</strong><span>&nbsp;Физмат-лицей</span></div>
+    </div>
+    <div class="profile-chip">
+      <span class="icon">💻</span>
+      <div><strong>Интерес</strong><span>&nbsp;IT-направление (базовый уровень)</span></div>
+    </div>
+    <div class="profile-chip">
+      <span class="icon">📍</span>
+      <div><strong>Приоритет</strong><span>&nbsp;Санкт-Петербург + 1-2 вуза Москвы</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Filters ─────────────────────────────────────────── -->
+<div class="filters-wrap">
+  <span class="filter-label">Фильтр по приоритету:</span>
+  <button class="filter-btn active" onclick="filter('all', this)">Все 25</button>
+  <button class="filter-btn" onclick="filter('top', this)">🟢 Топ выбор</button>
+  <button class="filter-btn" onclick="filter('high', this)">🔵 Высокий</button>
+  <button class="filter-btn" onclick="filter('mid', this)">🟡 Средний</button>
+  <div class="score-hint">💡 Проходной балл — сумма трёх ЕГЭ (макс. 300 + 10 доп. баллов)</div>
+</div>
+
+<div class="scale-legend">
+  <div class="scale-item"><div class="scale-dot" style="background:#10b981"></div> до 245 — доступно</div>
+  <div class="scale-item"><div class="scale-dot" style="background:#3b82f6"></div> 245–270 — умеренно</div>
+  <div class="scale-item"><div class="scale-dot" style="background:#8b5cf6"></div> 270–290 — высокий</div>
+  <div class="scale-item"><div class="scale-dot" style="background:#ef4444"></div> 290+ — очень высокий</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ГЛАВНЫЕ ВУЗЫ
+═══════════════════════════════════════════════════════════ -->
+<main class="main">
+
+<!-- ─────────────────── ИТМО ─────────────────────────── -->
+<div class="uni-section" id="itmo">
+  <div class="section-header">
+    <div class="uni-logo" style="background:linear-gradient(135deg,#1e3a8a,#0ea5e9)">И</div>
+    <div class="uni-info">
+      <h2>Университет ИТМО <span class="priority-stars">⭐⭐⭐⭐⭐</span></h2>
+      <p>Санкт-Петербург · IT-университет №1 в России · Рейтинг QS 360</p>
+    </div>
+    <a href="https://abit.itmo.ru/programs/bachelor" target="_blank" class="uni-link">→ Сайт абитуриента</a>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 1 -->
+    <div class="card priority-top" data-priority="top" data-score="284">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">1</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Программная инженерия</div>
+          <span class="card-code">09.03.04</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Разработка программного обеспечения, архитектура систем, DevOps, тестирование. Самая «индустриальная» программа ИТМО — выпускники сразу востребованы в IT-компаниях.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Backend-разработчик</span>
+          <span class="career-tag">Fullstack-инженер</span>
+          <span class="career-tag">DevOps-инженер</span>
+          <span class="career-tag">Software Architect</span>
+        </div>
+      </div>
+      <div class="card-footer score-high">
+        <div class="score-badge">
+          <span class="score-label">~284</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:88%"></div>
+        </div>
+        <span class="places-badge">54 бюджет. места</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card priority-top" data-priority="top" data-score="270">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">2</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информатика и вычислительная техника</div>
+          <span class="card-code">09.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Системное программирование, операционные системы, компьютерная архитектура и сети. Крепкая техническая база + специализации по ИИ и Big Data.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Системный программист</span>
+          <span class="career-tag">ML-инженер</span>
+          <span class="career-tag">Разработчик embedded</span>
+        </div>
+      </div>
+      <div class="card-footer score-high">
+        <div class="score-badge">
+          <span class="score-label">~270</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:82%"></div>
+        </div>
+        <span class="places-badge">60 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card priority-top" data-priority="top" data-score="305">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">3</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Прикладная математика и информатика<br><small style="font-weight:400;color:#64748b">(Компьютерные технологии)</small></div>
+          <span class="card-code">01.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Флагманская программа ИТМО — математические методы, алгоритмы, машинное обучение. Самый высокий проходной балл. Для амбициозных студентов.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Data Scientist</span>
+          <span class="career-tag">ML/AI инженер</span>
+          <span class="career-tag">Researcher</span>
+          <span class="career-tag">Алготрейдер</span>
+        </div>
+      </div>
+      <div class="card-footer score-top">
+        <div class="score-badge">
+          <span class="score-label">~305</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:99%"></div>
+        </div>
+        <span class="places-badge">30 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card priority-high" data-priority="high" data-score="260">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">4</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информационные системы и технологии</div>
+          <span class="card-code">09.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Проектирование и разработка корпоративных ИС, интеграция систем, бизнес-аналитика. Хороший баланс между разработкой и системным анализом.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Системный аналитик</span>
+          <span class="career-tag">Разработчик ИС</span>
+          <span class="career-tag">IT-архитектор</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~260</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:78%"></div>
+        </div>
+        <span class="places-badge">40 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card priority-high" data-priority="high" data-score="258">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">5</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Математическое обеспечение и администрирование ИС</div>
+          <span class="card-code">02.03.03</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Математические модели, разработка ПО, системное администрирование. Сочетает фундаментальную математику с прикладными IT-навыками.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Разработчик алгоритмов</span>
+          <span class="career-tag">Sysadmin / DevOps</span>
+          <span class="career-tag">Программист-математик</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~258</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:77%"></div>
+        </div>
+        <span class="places-badge">35 бюджет. мест</span>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /itmo -->
+
+<!-- ─────────────────── ВШЭ СПб ────────────────────────── -->
+<div class="uni-section" id="hse">
+  <div class="section-header">
+    <div class="uni-logo" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">В</div>
+    <div class="uni-info">
+      <h2>НИУ ВШЭ — Санкт-Петербург <span class="priority-stars">⭐⭐⭐⭐⭐</span></h2>
+      <p>Санкт-Петербург · Топ-3 университет России · Сильная карьерная и аналитическая подготовка</p>
+    </div>
+    <a href="https://spb.hse.ru/ba/" target="_blank" class="uni-link">→ Сайт абитуриента</a>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 6 -->
+    <div class="card priority-top" data-priority="top" data-score="278">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">6</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Программная инженерия</div>
+          <span class="card-code">09.03.04</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Практико-ориентированная программа с упором на современные технологии разработки, Agile, облачные технологии. Тесное сотрудничество с индустрией (Яндекс, JetBrains, СберТех).
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Software Engineer</span>
+          <span class="career-tag">Tech Lead</span>
+          <span class="career-tag">Product Engineer</span>
+        </div>
+      </div>
+      <div class="card-footer score-high">
+        <div class="score-badge">
+          <span class="score-label">~278</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:85%"></div>
+        </div>
+        <span class="places-badge">30 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card priority-top" data-priority="top" data-score="282">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">7</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Прикладная математика и информатика<br><small style="font-weight:400;color:#64748b">(Анализ данных и ИИ)</small></div>
+          <span class="card-code">01.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Машинное обучение, статистика, анализ данных и искусственный интеллект. Одна из лучших аналитических программ в РФ, международно ориентированная.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Data Scientist</span>
+          <span class="career-tag">ML Engineer</span>
+          <span class="career-tag">AI Researcher</span>
+          <span class="career-tag">Аналитик данных</span>
+        </div>
+      </div>
+      <div class="card-footer score-high">
+        <div class="score-badge">
+          <span class="score-label">~282</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:87%"></div>
+        </div>
+        <span class="places-badge">25 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card priority-high" data-priority="high" data-score="265">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">8</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Математика</div>
+          <span class="card-code">02.03.01 / 01.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Чистая и прикладная математика с компонентой программирования. Открывает двери в финтех, ИИ-исследования и академическую карьеру. Отличный выбор для любящих теорию.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Квантовый аналитик</span>
+          <span class="career-tag">Исследователь ИИ</span>
+          <span class="career-tag">Финтех-аналитик</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~265</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:80%"></div>
+        </div>
+        <span class="places-badge">25 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card priority-high" data-priority="high" data-score="255">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">9</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информатика и вычислительная техника</div>
+          <span class="card-code">09.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Глубокая техническая подготовка в области систем и архитектуры ПО. Акцент на современные фреймворки и методологии разработки в связке с бизнес-задачами.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Backend-разработчик</span>
+          <span class="career-tag">Platform Engineer</span>
+          <span class="career-tag">Tech Lead</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~255</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:76%"></div>
+        </div>
+        <span class="places-badge">30 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card priority-mid" data-priority="mid" data-score="240">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">10</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Бизнес-информатика</div>
+          <span class="card-code">38.03.05</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Управление IT-проектами, цифровая трансформация бизнеса, ERP-системы. Сочетает IT и менеджмент — отличный вариант, если интересует пересечение технологий и бизнеса.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">IT-менеджер</span>
+          <span class="career-tag">Бизнес-аналитик</span>
+          <span class="career-tag">Product Manager</span>
+          <span class="career-tag">CTO</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~240</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:70%"></div>
+        </div>
+        <span class="places-badge">20 бюджет. мест</span>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /hse -->
+
+<!-- ─────────────────── СПбГУ ──────────────────────────── -->
+<div class="uni-section" id="spbgu">
+  <div class="section-header">
+    <div class="uni-logo" style="background:linear-gradient(135deg,#1a4731,#15803d)">С</div>
+    <div class="uni-info">
+      <h2>Санкт-Петербургский государственный университет <span class="priority-stars">⭐⭐⭐⭐</span></h2>
+      <p>Санкт-Петербург · Классический университет · Сильная фундаментальная математика и ИТ</p>
+    </div>
+    <a href="https://abiturient.spbu.ru/bo/napravleniya-i-programmy.html" target="_blank" class="uni-link">→ Сайт абитуриента</a>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 11 -->
+    <div class="card priority-top" data-priority="top" data-score="264">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">11</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Математика и компьютерные науки</div>
+          <span class="card-code">02.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Факультет МаКС — один из лучших в стране. Фундаментальная математика + алгоритмы + Data Science. Проходной балл 263–264 в 2024–2025 гг. Академическая и индустриальная карьера.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Data Scientist</span>
+          <span class="career-tag">Исследователь ИИ</span>
+          <span class="career-tag">Разработчик алгоритмов</span>
+          <span class="career-tag">Аналитик</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~264</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:80%"></div>
+        </div>
+        <span class="places-badge">20 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="card priority-top" data-priority="top" data-score="262">
+      <span class="priority-label">Топ выбор</span>
+      <div class="card-head">
+        <div class="card-num">12</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Прикладная математика и информатика<br><small style="font-weight:400;color:#64748b">(Современное программирование)</small></div>
+          <span class="card-code">01.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Факультет ПМ-ПУ. Широкая математическая база + прикладное программирование. Профили: современное программирование, параллельные вычисления, математическое моделирование.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Программист-математик</span>
+          <span class="career-tag">Системный разработчик</span>
+          <span class="career-tag">Data Engineer</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~262</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:79%"></div>
+        </div>
+        <span class="places-badge">25 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="card priority-high" data-priority="high" data-score="253">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">13</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Фундаментальная информатика и ИТ</div>
+          <span class="card-code">02.03.03</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Теоретические основы программирования, формальные языки, алгоритмическая теория сложности. Для тех, кто хочет понимать «как это устроено изнутри».
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Алгоритмист</span>
+          <span class="career-tag">Compiler Engineer</span>
+          <span class="career-tag">Security Researcher</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~253</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:75%"></div>
+        </div>
+        <span class="places-badge">20 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="card priority-high" data-priority="high" data-score="248">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">14</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Программная инженерия</div>
+          <span class="card-code">09.03.04</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Инженерный подход к разработке ПО на базе математической строгости СПбГУ. Методологии разработки, тестирование, верификация программ.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Software Engineer</span>
+          <span class="career-tag">QA Lead</span>
+          <span class="career-tag">IT-консультант</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~248</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:73%"></div>
+        </div>
+        <span class="places-badge">20 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="card priority-mid" data-priority="mid" data-score="235">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">15</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Математика</div>
+          <span class="card-code">01.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Классическая математика с возможностью специализации в вычислительной математике. Открывает академическую карьеру и карьеру в FinTech / Quant Finance.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Математик-программист</span>
+          <span class="career-tag">Quantitative Analyst</span>
+          <span class="career-tag">Преподаватель / учёный</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~235</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:68%"></div>
+        </div>
+        <span class="places-badge">25 бюджет. мест</span>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /spbgu -->
+
+<!-- ─────────────────── Политех ─────────────────────────── -->
+<div class="uni-section" id="polytech">
+  <div class="section-header">
+    <div class="uni-logo" style="background:linear-gradient(135deg,#1e3a8a,#2563eb)">П</div>
+    <div class="uni-info">
+      <h2>СПбПУ Петра Великого (Политех) <span class="priority-stars">⭐⭐⭐⭐</span></h2>
+      <p>Санкт-Петербург · Сильный технический вуз · Большое кол-во бюджетных мест в IT</p>
+    </div>
+    <a href="https://www.spbstu.ru/abit/bachelor/" target="_blank" class="uni-link">→ Сайт абитуриента</a>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 16 -->
+    <div class="card priority-high" data-priority="high" data-score="248">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">16</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Программная инженерия</div>
+          <span class="card-code">09.03.04</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Институт компьютерных наук и кибербезопасности. Большое количество мест, современная лабораторная база, партнёрство с крупными IT-компаниями города.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Разработчик ПО</span>
+          <span class="career-tag">DevOps Engineer</span>
+          <span class="career-tag">Software Architect</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~248</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:73%"></div>
+        </div>
+        <span class="places-badge">75 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 17 -->
+    <div class="card priority-high" data-priority="high" data-score="242">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">17</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информационные системы и технологии</div>
+          <span class="card-code">09.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Разработка и интеграция ИС, веб-технологии, облачные платформы. Хороший выбор для тех, кто хочет работать в корпоративном IT-секторе после выпуска.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Разработчик ИС</span>
+          <span class="career-tag">Веб-разработчик</span>
+          <span class="career-tag">Системный интегратор</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~242</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:71%"></div>
+        </div>
+        <span class="places-badge">65 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 18 -->
+    <div class="card priority-high" data-priority="high" data-score="245">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">18</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Прикладная математика и информатика</div>
+          <span class="card-code">01.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Математическое моделирование, численные методы, вычислительная математика. Сочетание строгой математики с практическим программированием.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Инженер-математик</span>
+          <span class="career-tag">Data Scientist</span>
+          <span class="career-tag">Разработчик моделей</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~245</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:72%"></div>
+        </div>
+        <span class="places-badge">30 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 19 -->
+    <div class="card priority-mid" data-priority="mid" data-score="235">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">19</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Кибербезопасность и защита информации</div>
+          <span class="card-code">10.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Криптография, сетевая безопасность, защита данных, пентестинг. Одно из самых востребованных направлений в 2026 году — специалистов по ИБ критически не хватает.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Специалист по ИБ</span>
+          <span class="career-tag">Penetration Tester</span>
+          <span class="career-tag">SOC-аналитик</span>
+          <span class="career-tag">Криптограф</span>
+        </div>
+      </div>
+      <div class="card-footer score-low">
+        <div class="score-badge">
+          <span class="score-label">~235</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:68%"></div>
+        </div>
+        <span class="places-badge">25 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 20 -->
+    <div class="card priority-mid" data-priority="mid" data-score="230">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">20</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информатика и вычислительная техника</div>
+          <span class="card-code">09.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Системное программирование, архитектура ЭВМ, операционные системы. Широкий охват тем — от «железа» до современного ПО.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Системный программист</span>
+          <span class="career-tag">Embedded-инженер</span>
+          <span class="career-tag">IT-инженер</span>
+        </div>
+      </div>
+      <div class="card-footer score-low">
+        <div class="score-badge">
+          <span class="score-label">~230</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:66%"></div>
+        </div>
+        <span class="places-badge">55 бюджет. мест</span>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /polytech -->
+
+<!-- ─────────────────── ЛЭТИ ──────────────────────────── -->
+<div class="uni-section" id="leti">
+  <div class="section-header">
+    <div class="uni-logo" style="background:linear-gradient(135deg,#7c2d12,#dc2626)">Л</div>
+    <div class="uni-info">
+      <h2>СПбГЭТУ «ЛЭТИ» <span class="priority-stars">⭐⭐⭐⭐</span></h2>
+      <p>Санкт-Петербург · Технический вуз · Электроника + IT · Разумный проходной балл</p>
+    </div>
+    <a href="https://abit.etu.ru/ru/postupayushhim/bakalavriat-i-specialitet" target="_blank" class="uni-link">→ Сайт абитуриента</a>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 21 -->
+    <div class="card priority-high" data-priority="high" data-score="240">
+      <span class="priority-label">Высокий</span>
+      <div class="card-head">
+        <div class="card-num">21</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Программная инженерия</div>
+          <span class="card-code">09.03.04</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Разработка ПО с акцентом на системное и встроенное программирование. Тесная связь с производственными партнёрами в сфере электроники и автоматики.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Разработчик ПО</span>
+          <span class="career-tag">Embedded Developer</span>
+          <span class="career-tag">IoT-инженер</span>
+        </div>
+      </div>
+      <div class="card-footer score-mid">
+        <div class="score-badge">
+          <span class="score-label">~240</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:70%"></div>
+        </div>
+        <span class="places-badge">45 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 22 -->
+    <div class="card priority-mid" data-priority="mid" data-score="232">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">22</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информатика и вычислительная техника</div>
+          <span class="card-code">09.03.01</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Компьютерные системы и сети, программирование, базы данных. Уникальное сочетание с электроникой открывает нишу embedded- и hardware-близкой разработки.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Сетевой инженер</span>
+          <span class="career-tag">Системный программист</span>
+          <span class="career-tag">Hardware Engineer</span>
+        </div>
+      </div>
+      <div class="card-footer score-low">
+        <div class="score-badge">
+          <span class="score-label">~232</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:67%"></div>
+        </div>
+        <span class="places-badge">40 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 23 -->
+    <div class="card priority-mid" data-priority="mid" data-score="225">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">23</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Информационные системы и технологии</div>
+          <span class="card-code">09.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Разработка корпоративных ИС, ERP, CRM, базы данных. Ориентирован на практическое применение в бизнесе — популярный выбор у работодателей в Петербурге.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Разработчик 1С</span>
+          <span class="career-tag">Системный аналитик</span>
+          <span class="career-tag">Интегратор ИС</span>
+        </div>
+      </div>
+      <div class="card-footer score-low">
+        <div class="score-badge">
+          <span class="score-label">~225</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:64%"></div>
+        </div>
+        <span class="places-badge">40 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 24 -->
+    <div class="card priority-mid" data-priority="mid" data-score="220">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">24</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Прикладная математика и информатика</div>
+          <span class="card-code">01.03.02</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Математические методы для инженерных задач. Профильные дисциплины охватывают численное моделирование, анализ данных и алгоритмику для технических приложений.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Инженер по данным</span>
+          <span class="career-tag">Аналитик</span>
+          <span class="career-tag">Программист-математик</span>
+        </div>
+      </div>
+      <div class="card-footer score-low">
+        <div class="score-badge">
+          <span class="score-label">~220</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:62%"></div>
+        </div>
+        <span class="places-badge">25 бюджет. мест</span>
+      </div>
+    </div>
+
+    <!-- 25 -->
+    <div class="card priority-mid" data-priority="mid" data-score="215">
+      <span class="priority-label">Средний</span>
+      <div class="card-head">
+        <div class="card-num">25</div>
+        <div class="card-title-wrap">
+          <div class="card-title">Математическое обеспечение и администрирование ИС</div>
+          <span class="card-code">02.03.03</span>
+        </div>
+      </div>
+      <p class="card-desc">
+        Системное администрирование, математические основы ИС, инфраструктура IT. Подходит как «запасной» вариант — проходной балл ниже, но образование качественное.
+      </p>
+      <div class="card-careers">
+        <strong>Кем станешь:</strong>
+        <div class="career-tags">
+          <span class="career-tag">Sysadmin</span>
+          <span class="career-tag">IT-инженер</span>
+          <span class="career-tag">DevOps-специалист</span>
+        </div>
+      </div>
+      <div class="card-footer score-low">
+        <div class="score-badge">
+          <span class="score-label">~215</span>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar" style="width:60%"></div>
+        </div>
+        <span class="places-badge">30 бюджет. мест</span>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /leti -->
+
+<!-- ─────────────────── Москва ─────────────────────────── -->
+<div id="moscow" class="moscow-note">
+  <strong>🏙️ Москва — дополнительные варианты (если баллы позволяют)</strong><br>
+  Подавать в московские вузы имеет смысл при высоких баллах (270+) и готовности к переезду.
+  Рассмотри: <strong>МГТУ им. Баумана</strong> — ИКТ/09.03.01 (~289), Прикл. математика (~302);
+  <strong>НИУ ВШЭ Москва</strong> — Программная инженерия (~305+), очень высокая конкуренция;
+  <strong>МИРЭА</strong> — альтернатива с менее высоким проходным баллом (~240–255).
+  Всегда сначала заполни 5 слотов петербургскими вузами, потом оцени возможность добавить 1–2 московских.
+</div>
+
+<!-- ─────────────────── Альтернативные направления ─────── -->
+<div id="alt" class="alt-section">
+  <h2>🔀 Альтернативные направления по профилю</h2>
+  <p>Нестандартные, но отлично подходящие по ЕГЭ (математика + информатика + русский) и интересам. Меньший конкурс — нередко более интересная карьерная ниша.</p>
+  <div class="alt-grid">
+
+    <div class="alt-card">
+      <span class="alt-tag">Кибербезопасность</span>
+      <h4>Информационная безопасность (10.03.01)</h4>
+      <p>СПбПУ, ЛЭТИ, ГУАП. Проходной ~215–235. Дефицитная специальность, высокие зарплаты с первого года работы. ФСБ, банки, IT-компании.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">ИИ / Данные</span>
+      <h4>Искусственный интеллект (09.03.05)</h4>
+      <p>ИТМО, ВШЭ, Политех. Новое направление 2023+. Нейросети, CV, NLP. Высокий спрос — дефицит специалистов на рынке. Проходной ~250–280.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">Телеком</span>
+      <h4>Инфокоммуникационные технологии (11.03.02)</h4>
+      <p>СПбГУТ им. Бонч-Бруевича. Проходной ~210–225. Сети, телефония, 5G, облака. Специализированный вуз с отличной базой практики.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">Аэрокосмос + IT</span>
+      <h4>ГУАП — Системы управления (09.03.01)</h4>
+      <p>Государственный университет аэрокосмического приборостроения. Проходной ~210–230. Авиация, приборы, встроенные системы — уникальная ниша.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">Биоинформатика</span>
+      <h4>Биоинженерия и биоинформатика</h4>
+      <p>СПБГУ, ИТМО. Стык биологии + IT + математики. Одно из самых перспективных направлений 2030-х. Подходит для тех, кому IT интересен как инструмент науки.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">Геймдев</span>
+      <h4>Разработка игр (профиль ВШЭ СПб)</h4>
+      <p>Программная инженерия, профиль «Программирование и инжиниринг компьютерных игр» — ВШЭ СПб. Если есть интерес к игровой индустрии и геймдизайну.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">EdTech / Платформы</span>
+      <h4>Бизнес-информатика (38.03.05)</h4>
+      <p>СПбГУ, ВШЭ, Политех. Проходной ~225–240. Для тех, кто видит себя не кодером, а «мозгом» IT-продукта: PM, продуктовый аналитик, CTO небольшой компании.</p>
+    </div>
+
+    <div class="alt-card">
+      <span class="alt-tag">Без переезда</span>
+      <h4>Онлайн-программы ВШЭ / Тинькофф</h4>
+      <p>Тинькофф Образование, Яндекс Практикум параллельно с очным обучением. Можно совмещать с любым вузом — реальный способ получить практику с первого курса.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─────────────────── Советы ─────────────────────────── -->
+<div class="tips">
+  <h3>💡 Практические советы по поступлению</h3>
+  <div class="tip-list">
+    <div class="tip">
+      <span class="tip-icon">🎯</span>
+      <span><strong>Стратегия подачи:</strong> 1-2 «мечты» (ИТМО/ВШЭ), 2-3 «реальных» (СПбГУ/Политех), 1 «запасной» (ЛЭТИ или ГУАП). Не подавай в один вуз больше 5 направлений — они считаются отдельными конкурсами.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">📊</span>
+      <span><strong>Проходной балл 2026:</strong> Цифры на странице — средние за 2024–2025 гг. В 2026 возможно отклонение ±10–15 баллов. Следи за обновлениями на сайтах приёмных комиссий с апреля 2026.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🏆</span>
+      <span><strong>Дополнительные баллы:</strong> Сочинение, ГТО, волонтёрство — до 10 дополнительных баллов в большинстве вузов. Это может сыграть ключевую роль при проходном балле на границе.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">📅</span>
+      <span><strong>Сроки 2026:</strong> Подача документов — 20 июня – 25 июля. Приоритетное зачисление — 28 июля. Основное зачисление — 3 августа. Следи за официальными порталами вузов.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💼</span>
+      <span><strong>Что важнее диплома:</strong> На любом направлении — портфолио и практика с 1–2 курса. Начни с pet-проектов ещё летом после поступления. GitHub > средний балл в дипломе.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🔗</span>
+      <span><strong>Официальный агрегатор:</strong> <a href="https://www.gosuslugi.ru/vuzy" target="_blank" style="color:var(--accent)">Госуслуги → «Поступление в вуз»</a> — единая подача документов в 5 вузов онлайн.</span>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  Данные по проходным баллам — средние за 2024–2025 гг. Уточняй актуальную информацию на официальных сайтах вузов перед подачей документов.<br>
+  Сайты абитуриентов:
+  <a href="https://abit.itmo.ru" target="_blank" style="color:var(--accent)">ИТМО</a> ·
+  <a href="https://spb.hse.ru/ba/" target="_blank" style="color:var(--accent)">ВШЭ СПб</a> ·
+  <a href="https://abiturient.spbu.ru" target="_blank" style="color:var(--accent)">СПбГУ</a> ·
+  <a href="https://www.spbstu.ru/abit/" target="_blank" style="color:var(--accent)">Политех</a> ·
+  <a href="https://abit.etu.ru" target="_blank" style="color:var(--accent)">ЛЭТИ</a>
+</footer>
+
+<script>
+  function filter(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.card').forEach(card => {
+      if (type === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const p = card.dataset.priority;
+        card.classList.toggle('hidden', p !== type);
+      }
+    });
+
+    document.querySelectorAll('.uni-section').forEach(section => {
+      const visibleCards = section.querySelectorAll('.card:not(.hidden)');
+      section.classList.toggle('all-hidden', visibleCards.length === 0);
+    });
+  }
+
+  // Animate score bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target.querySelector('.score-bar');
+        if (bar) {
+          const width = bar.style.width;
+          bar.style.width = '0';
+          setTimeout(() => { bar.style.width = width; }, 100);
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
 </body>
 </html>
